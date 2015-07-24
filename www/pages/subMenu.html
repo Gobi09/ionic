@@ -1,0 +1,64 @@
+<ion-view>
+  <ion-content ng-controller="subMenu ">
+         <div class="list list-inset">
+          <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <label class="item-input-wrapper">
+              <input id="searchKey" type="search" placeholder="Search" ng-model="Menu" >
+            </label>
+          </label>
+        </div>
+
+      <ion-list class="">
+        <div ng-repeat="menu in SubMenu  | filter:Menu">
+          <ion-item class="item  item-trns text-center "ng-click="toggleGroup(menu)"
+                    ng-class="{active: isGroupShown(menu)}">
+
+           {{menu.Menu}}
+          </ion-item>
+          <!-- <div class="item item-trns item-accordion"
+                    ng-repeat="item in menu.items"
+                    ng-click="toggleitem(item)"
+                    ng-show="isGroupShown(menu)" ng-class="{active: isItmeShown(item)}"> 
+            <div>
+              <a class="item item-trns" href="#/menu/={{menu.subMenuid}}">
+                <h2> {{item}}</h2>
+              </a>
+            </div>
+        </div> --> 
+
+<a class="item item-trns item-accordion"
+                    ng-repeat="item in menu.items"
+                    ng-click="toggleitem(item)"
+                    ng-show="isGroupShown(menu)" ng-class="{active: isItmeShown(item)}" href="#/subMenuItem/={{menu.subMenuid}}">
+               {{item}}
+              </a>
+
+         <!--  <ion-item class="item item-trns item-accordion"
+                    ng-repeat="item in menu.items"
+                    ng-click="toggleitem(item)"
+                    ng-show="isGroupShown(menu)" ng-class="{active: isItmeShown(item)}">
+           {{item}}
+          </ion-item> -->
+          <!-- <ion-item class="item  item-trns text-center"
+                    ng-repeat="data in Finalitem"
+                    ng-show="isItmeShown(data.item)">
+            {{data.item}}
+          </ion-item> -->
+
+
+        </div>
+      </ion-list>
+  </ion-content>
+</ion-view>
+<script type="text/javascript">
+  $(document).ready(function () {
+      //hide the all of the element with class msg_body
+      $(".msg_body").hide();
+      //toggle the componenet with class msg_body
+      $(".msg_head").click(function () {
+          $(this).next("*.msg_body1").slideToggle(600);
+          $(this).toggleClass("open");
+      })
+  }); 
+</script>

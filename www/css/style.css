@@ -1,0 +1,14 @@
+.right {
+        float:right;
+    }
+.Bwhite{
+	background-color:white;
+}
+.scroll {
+    height: 100%;
+}
+ 
+#map {
+    width: 100%;
+    height: 100%;
+}
