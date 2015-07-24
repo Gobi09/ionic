@@ -116,6 +116,11 @@
 				            <button class="button" id="price1" style=" background:  #34495e; color: white; ">50<span>AED</span></button>
 				           	<a id="b1" class="button" style="background: #d35400;color: white; width:35px; ">Add to Cart</a>
 				        </div>
+				       
+				        <div class="item " >
+				          
+				        </div>
+				    
             	</div>
     		</div>
 
@@ -135,44 +140,43 @@
       	
   	</ion-content>
 </ion-view>
-
-<script>
-function plus(){
-	alert("onclikc");
-}
- $(document).ready(function () {
-	$("#plus1").click(function()
-    { 
-		var total= $(".quantity1").val();
+<!-- <script> 
+ function plus(){
+// 	alert("onclikc");
+// }
+//  $(document).ready(function () {
+// 	$("#plus1").click(function()
+//     { 
+// 		var total= $(".quantity1").val();
 		
-		if (total>=1)
-		{
-		    total++;
-		    var price=50*total;
-		    $(".quantity1").val(total);
-		   $("#price1").html(price+" AED");
-		}
+// 		if (total>=1)
+// 		{
+// 		    total++;
+// 		    var price=50*total;
+// 		    $(".quantity1").val(total);
+// 		   $("#price1").html(price+" AED");
+// 		}
 
-    });
-    $("#minus1").click(function()
-    {
-		var total= $(".quantity1").val();
-		total--;
-		if (total>=1)
-		{
-		    var price=50*total;
-		    $(".quantity1").val(total);
-		     $("#price1").html(price+" AED");
+//     });
+//     $("#minus1").click(function()
+//     {
+// 		var total= $(".quantity1").val();
+// 		total--;
+// 		if (total>=1)
+// 		{
+// 		    var price=50*total;
+// 		    $(".quantity1").val(total);
+// 		     $("#price1").html(price+" AED");
 		    
-		}
-		else{
-		     var price=50*1;
-		    $(".quantity1").val("1");
-		    $("#price1").html(price+" AED");
+// 		}
+// 		else{
+// 		     var price=50*1;
+// 		    $(".quantity1").val("1");
+// 		    $("#price1").html(price+" AED");
 		     
-		}
-    });
+// 		}
+//     });
 
-});
+// });
 	
-</script>
+// </script> -->
