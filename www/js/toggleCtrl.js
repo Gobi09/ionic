@@ -50,27 +50,27 @@ angular.module('starter.toggleCtrl', [])
 .controller('menu', function($scope) {
   $scope.Menus =[
   {
-      menu: 'Lunch',
+      menu: 'LUNCH',
       id:1
     },
     {
-      menu: 'Soups',
+      menu: 'SOUPS',
       id:2
     },
     {
-      menu: 'Dinner',
+      menu: 'DINNER',
       id:3
     },
     {
-      menu: 'Apptizers',
+      menu: 'APPETIZERS',
       id:4
     },
     {
-      menu: 'Deserts',
+      menu: 'DESERTS',
       id:5
     },
     {
-      menu: 'Drings',
+      menu: 'DEINGS',
       id:6
     }
     ];
@@ -116,6 +116,12 @@ angular.module('starter.toggleCtrl', [])
     }];
 
 
+  $scope.totalCount = function(group) {
+
+    alert($("#quantity").val());
+    $urlRouterProvider.otherwise('/addToCart');
+    
+  };
     $scope.toggleGroup = function(group) {
     if ($scope.isGroupShown(group)) {
         $scope.shownGroup = null;
@@ -174,4 +180,56 @@ angular.module('starter.toggleCtrl', [])
         $scope.map = map;
     }
 })
+.controller('table', function($scope) {
+        
+      $scope.OrderedItem=[{
+      item: 'Checken Briyani',
+      subMenuid:1,
+      menuId:1,
+      itemId:1,
+      price:20,
+      image:'img/bri3.jpg',
+      quantity:2,
+      subTotal:40
+    },
+    {
+      item: 'Mutton Briyani',
+      subMenuid:2,
+      menuId:1,
+      itemId:1,
+      price:40,
+      image:'img/bri2.jpg',
+      quantity:5,
+      subTotal:200
+    }
+    ];
+    $scope.totalAmount="";
+
+        $scope.removeOrder = function(index) {
+          $scope.OrderedItem.splice(index,1);
+          alert("order deleted");
+        };
+
+        $scope.getTotal = function(){
+            var total = 0;
+            var length= $scope.OrderedItem.length;
+
+            for(var i = 0; i < length; i++){
+                var product = $scope.OrderedItem[i];
+                total += product.subTotal;
+            }
+            $scope.totalAmount=total;
+            if (total==0) {
+              $("#food").hide();
+            };
+            return total;
+        }
+
+        $scope.totalCount=function(data) {
+          alert(data);
+        };
+
+    })
+ 
+
   

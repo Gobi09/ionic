@@ -17,6 +17,47 @@
 			<div class="row responsive-md" > 
 	            <div class="col  item-white">
 	               	<img class="text-center" style="text-align: center;" width="100%" src="	img/bri3.jpg"  >
+
+
+	               	<h4>Quantity</h4>
+			        <div class="button-bar">
+			            <button class="button" onclick='var total= $(".quantity1").val();
+						total--;
+						if (total>=1)
+						{
+						    var price=50*total;
+						    $(".quantity1").val(total);
+						     $("#price1").html(price+" AED");
+						    
+						}
+						else{
+						     var price=50*1;
+						    $(".quantity1").val("1");
+						    $("#price1").html(price+" AED");
+						     
+							}' id="minus1"><img src="img/minus.png" style="width:30%"  ></button>
+			            <input type="button"  value="1" name="quantity" class="button quantity1" id="quantity">
+			          	<button class="button" onclick='var total= $(".quantity1").val();
+							if (total>=1)
+							{
+							    total++;
+							    var price=50*total;
+							    $(".quantity1").val(total);
+							   $("#price1").html(price+" AED");
+							}'> 
+							<img src="img/plus.png" style="width:30%"> 
+						</button>
+			        </div>
+
+			        <h4>Price</h4>
+			        <div class="button-bar">
+			            <button class="button" id="price1" style=" background:  #34495e; color: white; ">50<span>AED</span></button>
+			            <!-- <button class="button"  style=" background:  #d35400; color: white; " ng-click="totalCount(1);">Add to Cart</button> -->
+			           	<a href="#/addToCart"class="button"  id="b1" style="background: #d35400;color: white; width:35px;"ng-click="totalCount();" >Add to Cart</a>
+			        </div>
+
+
+
 	               	<h3>Ingredients</h3>
 	               	<div class="list">
 						<div class="item item-input-inset">
@@ -81,42 +122,11 @@
 						    </label>
 					  	</div>
 				  	</div>
-	           		<h4>Quantity</h4>
-				        <div class="button-bar">
-				            <button class="button" onclick='var total= $(".quantity1").val();
-							total--;
-							if (total>=1)
-							{
-							    var price=50*total;
-							    $(".quantity1").val(total);
-							     $("#price1").html(price+" AED");
-							    
-							}
-							else{
-							     var price=50*1;
-							    $(".quantity1").val("1");
-							    $("#price1").html(price+" AED");
-							     
-								}' id="minus1"><img src="img/minus.png" style="width:30%"  ></button>
-				            <input type="button"  value="1" name="quantity" class="button quantity1" id="quantity">
-				          	<button class="button" onclick='var total= $(".quantity1").val();
-								if (total>=1)
-								{
-								    total++;
-								    var price=50*total;
-								    $(".quantity1").val(total);
-								   $("#price1").html(price+" AED");
-								}'> 
-								<img src="img/plus.png" style="width:30%"> 
-							</button>
-				        </div>
-
-			        <h4>Price</h4>
-				        <div class="button-bar">
-				            <button class="button" id="price1" style=" background:  #34495e; color: white; ">50<span>AED</span></button>
-				           	<a id="b1" class="button" style="background: #d35400;color: white; width:35px; ">Add to Cart</a>
-				        </div>
+	           		
 				       
+				        <div class="item " >
+				          
+				        </div>
 				        <div class="item " >
 				          
 				        </div>

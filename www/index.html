@@ -4,13 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Branbox</title>
-   <style>
+    <style>
+/*      @media screen and (min-device-width: 480px) {
+        .scroll-content {
+            background: url('img/website-background.jpg') no-repeat;
+            background-size: cover;
+          }
+      }
+
+@media screen and (min-device-width: 720px) {
+    .scroll-content {
+      background: url('img/website-background.jpg') no-repeat;
+      background-size: cover;
+    }
+}*/
       .scroll-content{
-        background-image: url(img/background_food3.jpg);
+        background-image: url(img/background_food3.jpg); 
+        background-repeat:no-repeat;
+        background-size:100% 100%;
+        /*background-position:center;*/
+      }
+      .item.item-trnsIndex {
+        border-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);        
+      }
+      .item-trnsIndex h2 {
+        color: white; 
       }
       .item.item-trns {
         border-color: rgba(26, 0, 0, 0.22);
-        background-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.43);
         color: white; 
       }
       .item-trns h2{
@@ -19,6 +42,13 @@
       .item-white{
        background-color: white; 
       }
+        table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+      th {
+    color: #EF473A;
+}
       
     </style>
     
@@ -29,6 +59,14 @@
     <!-- IF using Sass (run gulp sass first), then remove the CSS include above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
+
+
+<script src="lib/js/ionic.js"></script>
+<script src="lib/js/angular/angular.js"></script>
+<script src="lib/js/angular/angular-animate.js"></script>
+<script src="lib/js/angular/angular-sanitize.js"></script>
+<script src="lib/js/angular-ui/angular-ui-router.js"></script>
+
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -47,7 +85,7 @@
     <ion-header-bar class="bar-header bar-assertive">
     <a class="button  icon-right ion-reply button-dark" onclick="window.history.back();"></a>
     <div class="title"> <img src="img/logo.jpg" style="width:100px; hieght:43px;"></div>
-    <a class="button  icon-left ion-ios-cart button-dark" ></a>
+    <a class="button  icon-left ion-ios-cart button-dark" href="#/addToCart" ></a>
     
   </ion-header-bar>
 

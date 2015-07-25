@@ -48,6 +48,10 @@ apps.config(function($stateProvider, $urlRouterProvider) {
         url: '/subMenuItem/=:id',
         templateUrl: 'pages/subMenuItem.html'
       })
+      .state('addToCart', {
+        url: '/addToCart',
+        templateUrl: 'pages/addToCart.html'
+      })
 
       //Author Pravinkumar on 23/7/2017
       //login
