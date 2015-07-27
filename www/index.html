@@ -4,20 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Branbox</title>
-    <style>
-/*      @media screen and (min-device-width: 480px) {
-        .scroll-content {
-            background: url('img/website-background.jpg') no-repeat;
-            background-size: cover;
-          }
-      }
-
-@media screen and (min-device-width: 720px) {
-    .scroll-content {
-      background: url('img/website-background.jpg') no-repeat;
-      background-size: cover;
-    }
-}*/
+   <style>
       .scroll-content{
         background-image: url(img/background_food3.jpg); 
         background-repeat:no-repeat;
@@ -50,23 +37,30 @@
     color: #EF473A;
 }
       
+                  .test
+            {
+                float: left;
+                display: inline-block;
+            }
+
+            #img div 
+            {
+                display: inline-block;
+
+ 
+    
+    image-size:contain;
+    
+}
     </style>
     
     
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <!-- <link href="css/ionicons.min" rel="stylesheet"> -->
+    <link href="css/ionicons.min" rel="stylesheet">
     <!-- IF using Sass (run gulp sass first), then remove the CSS include above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-
-
-<script src="lib/js/ionic.js"></script>
-<script src="lib/js/angular/angular.js"></script>
-<script src="lib/js/angular/angular-animate.js"></script>
-<script src="lib/js/angular/angular-sanitize.js"></script>
-<script src="lib/js/angular-ui/angular-ui-router.js"></script>
-
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -83,9 +77,16 @@
        
 <ion-pane>
     <ion-header-bar class="bar-header bar-assertive">
-    <a class="button  icon-right ion-reply button-dark" onclick="window.history.back();"></a>
-    <div class="title"> <img src="img/logo.jpg" style="width:100px; hieght:43px;"></div>
-    <a class="button  icon-left ion-ios-cart button-dark" href="#/addToCart" ></a>
+    <!-- <a class="button  icon-left ion-gear-a redColorBtn"></a> -->
+    <!-- <div class="buttons buttons-left header-item">
+      <span class="left-buttons">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left"> </button>
+      </span>
+    </div> -->
+    <div class="title"> <img src="img/logo.jpg" style="width:100px; hieght:43px;">
+        
+    </div>
+    <a class="button  icon-left ion-ios-cart redColorBtn" href="#/addToCart"  ></a>
     
   </ion-header-bar>
 
@@ -98,9 +99,9 @@
       
 
       <div class="bar bar-footer bar-assertive">
-       <a class="button  icon-right ion-home button-dark" href="#/mainMenu" ></a>
+       <a class="button  icon-right ion-home redColorBtn" href="#/mainMenu" ></a>
     <div class="title padding-top" id="logo"> </div>
-    <a class="button  icon-left ion-gear-a button-dark"></a>
+    <a class="button  icon-right ion-arrow-left-c redColorBtn" onclick="window.history.back();"></a>
       </div>
     </ion-pane>
   </body>

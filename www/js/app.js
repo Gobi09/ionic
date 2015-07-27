@@ -89,4 +89,10 @@ apps.config(function($stateProvider, $urlRouterProvider) {
         url: '/aboutUs',
         templateUrl: 'pages/aboutUs.html',          
       })
+       //Author Vinoth on 24/7/2017
+      //Gallery 
+      .state('gallery', {
+        url: '/gallery',
+        templateUrl: 'pages/gallery.html'
+      })
     })

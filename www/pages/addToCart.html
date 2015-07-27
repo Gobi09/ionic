@@ -10,8 +10,8 @@
        <table border="1" class="item-white text-center" style="width:100%;border: 1px solid black;padding: 15px; ">
         <thead>
             <tr>
-              <th></th>
-              <th>Item Name&nbsp;&nbsp;</th>
+              <th>Item&nbsp;&nbsp;</th>
+              <th>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
               <th>Qty&nbsp;&nbsp;</th>
               <th>Price&nbsp;&nbsp;</th>
               <th>sub Total</th>
@@ -20,13 +20,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="order in OrderedItem">
-              <td><img src="{{order.image}}" style="width:100px;">&nbsp;</td>
-              <td>{{order.item}}</td>
-              <td>{{order.quantity}}</td>    
-              <td>{{order.price}}</td>
-              <td>{{order.subTotal}}</td>
-              <td><button ng-click="removeOrder($index);"><i class="icon ion-close icon-assertive"></i></button></td>
+            <tr ng-repeat="order in OrderedItem" class="text-center" >
+              <td><img src="{{order.image}}" style="width:100px;">&nbsp;&nbsp;&nbsp;</td>
+              <td>
+                  <div class="button-bar">
+                    <label class="text-center">{{order.item}}</label>
+                  </div>
+              </td>
+              <td>
+                <div class="button-bar">
+                  <input type="text" style="width:24px" ng-keyup="getsubtotal($event,$index);" name="quantity"class="item item-input "  id="quantity" value="{{order.quantity}}">
+              </div>
+                <!--  -->
+              </td> 
+
+              <td>
+                  <div class="button-bar">
+                    <input type="text" style="width:25px" readonly name="price"class="text-center" id="price" value="{{order.price}}">
+                  </div>
+              </td>
+              <td>
+                  <div class="button-bar">
+                    <input type="text" style="width:60px" readonly name="subtotal"class="text-center" id="subTotal" value="{{order.subTotal}}">
+                  </div>
+              </td>
+              <td>
+                <button ng-click="removeOrder($index);" class="button button-small button-assertive"><i class="icon ion-close icon-assertive"></i></button></td>
               <td></td>
             </tr>
             <tr>
@@ -36,14 +55,20 @@
       </table>
       <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right"  type="item-text-wrap">
-        <div class=" button  icon-right  text-center">
+
+        <div class=" button button-small  icon-right  text-center">
         Total: 
-          {{ getTotal(); }}
+          {{ getTotal(); }}AED
+
         </div>
-        <div class=" button button-assertive  icon-right  text-center" id="food">
+        <div class=" button button-small button-assertive  icon-right  text-center" id="food">
         Get Food
         </div>
-
+<div class="  button-small  icon-right  text-center">
+        &nbsp;
+        </div><div class="  button-small  icon-right  text-center">
+        &nbsp;
+        </div>
 
       </ion-item>
     </ion-list>

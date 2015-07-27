@@ -1,4 +1,5 @@
-angular.module('starter.toggleCtrl', [])
+angular.module('starter.toggleCtrl', [
+  ])
 
 .controller('MyCtrl', function($scope) {
   //$scope.groups = [];
@@ -47,33 +48,45 @@ angular.module('starter.toggleCtrl', [])
   
 })
 
-.controller('menu', function($scope) {
-  $scope.Menus =[
-  {
-      menu: 'LUNCH',
-      id:1
-    },
-    {
-      menu: 'SOUPS',
-      id:2
-    },
-    {
-      menu: 'DINNER',
-      id:3
-    },
-    {
-      menu: 'APPETIZERS',
-      id:4
-    },
-    {
-      menu: 'DESERTS',
-      id:5
-    },
-    {
-      menu: 'DEINGS',
-      id:6
-    }
-    ];
+.controller('menu', function($scope,$http) {
+
+    $http.post('http://www.appnlogic.com/branboxAppAdmin/branboxAdminUi/ajaxMenu.php').success(function(data){
+    //console.log(data);
+    $scope.Menus=data.rows;
+    // console.log($scope.Menus);
+    // alert($scope.Menus);
+    //alert(data); 
+    }).error(function(){
+      alert("error");
+    });
+
+
+  // $scope.Menus =[
+  // {
+  //     menu: 'LUNCH',
+  //     id:1
+  //   },
+  //   {
+  //     menu: 'SOUPS',
+  //     id:2
+  //   },
+  //   {
+  //     menu: 'DINNER',
+  //     id:3
+  //   },
+  //   {
+  //     menu: 'APPETIZERS',
+  //     id:4
+  //   },
+  //   {
+  //     menu: 'DESERTS',
+  //     id:5
+  //   },
+  //   {
+  //     menu: 'DEINGS',
+  //     id:6
+  //   }
+  //   ];
   })
 .controller('subMenu', function($scope) {
   $scope.SubMenu =[
@@ -137,6 +150,7 @@ angular.module('starter.toggleCtrl', [])
   $scope.toggleitem = function(item) {
     if ($scope.isItmeShown(item)) {
       // alert($scope.isItmeShown(item));
+
         $scope.shownItem = null;
     } else {
       // alert(item);
@@ -149,6 +163,8 @@ angular.module('starter.toggleCtrl', [])
 
 
   })
+
+
 //Author Pravinkumar on 24/7/2015 latestoffer
   .controller('latestOffer', function($scope) {
     $scope.firstImages = { src : 'img/appetizers-2.jpg' };
@@ -180,10 +196,35 @@ angular.module('starter.toggleCtrl', [])
         $scope.map = map;
     }
 })
+.controller('contactUsMap', function($scope, $ionicLoading, $compile) {
+    $scope.initialize = function() {
+     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            var myLocation = new google.maps.Marker({
+                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                map: map,
+                title: "My Location"
+            });
+        });
+        $scope.map = map;
+    }
+})
+
+
+
+  //cart function
 .controller('table', function($scope) {
-        
+      $scope.totalAmount="";
+      $scope.OrderedItem="";
       $scope.OrderedItem=[{
-      item: 'Checken Briyani',
+      item: 'Chicken Briyani',
       subMenuid:1,
       menuId:1,
       itemId:1,
@@ -197,13 +238,13 @@ angular.module('starter.toggleCtrl', [])
       subMenuid:2,
       menuId:1,
       itemId:1,
-      price:40,
+      price:400,
       image:'img/bri2.jpg',
       quantity:5,
       subTotal:200
     }
     ];
-    $scope.totalAmount="";
+    
 
         $scope.removeOrder = function(index) {
           $scope.OrderedItem.splice(index,1);
@@ -211,12 +252,14 @@ angular.module('starter.toggleCtrl', [])
         };
 
         $scope.getTotal = function(){
+          //alert("call from");
             var total = 0;
             var length= $scope.OrderedItem.length;
 
             for(var i = 0; i < length; i++){
                 var product = $scope.OrderedItem[i];
-                total += product.subTotal;
+                total += parseInt(product.subTotal);
+                //alert(product.subTotal);
             }
             $scope.totalAmount=total;
             if (total==0) {
@@ -225,11 +268,120 @@ angular.module('starter.toggleCtrl', [])
             return total;
         }
 
+        $scope.getsubtotal = function(val,index){
+          //console.log($scope.OrderedItem);
+//alert();
+          // var quantity=$("#quantity").val();
+          var quantity=$(val.target).val() ;
+          if(quantity=="" || quantity=="0")
+          {
+            
+            $("#quantity").val(0);
+             $("#subTotal").val(0);  
+          }
+          else
+          {
+
+            var data= angular.copy($scope.OrderedItem);
+            var price=data[index].price;
+            var total = quantity*price;
+            $scope.OrderedItem.splice(index,1,{item: data[index].item,
+              subMenuid:data[index].subMenuid,
+              menuId:data[index].menuId,
+              itemId:data[index].itemId,
+              price:data[index].price,
+              image:data[index].image,
+              quantity: quantity,
+              subTotal: total}); 
+            console.log($scope.OrderedItem);
+            $scope.getTotal();
+          }
+   
+            
+        }
+
         $scope.totalCount=function(data) {
           alert(data);
         };
 
     })
+
+//gallery 
+
+.controller('IntroCtrl', function ($scope, $ionicModal, $ionicSlideBoxDelegate) {
+        
+    $scope.allImages = 
+    [{
+        'src' : 'img/d1.jpg'
+    }, 
+    {
+        'src' : 'img/d1.jpg'
+    },
+    {
+        'src' : 'img/d1.jpg'
+    }];
+ 
+    $ionicModal.fromTemplateUrl('templates/image-popover.html',
+    {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal)
+    {
+        $scope.modal = modal;
+    });
+
+    $scope.openModal = function()
+    {
+        $ionicSlideBoxDelegate.slide(0);
+        $scope.modal.show();
+    };
+
+    $scope.closeModal = function() 
+    {
+        $scope.modal.hide();
+    };
+
+    $scope.$on('$destroy', function() 
+    {
+        $scope.modal.remove();
+    });
+    
+    $scope.$on('modal.hide', function() 
+    {
+    
+    });
+    
+    $scope.$on('modal.removed', function() 
+    {
+    
+    });
+
+    $scope.$on('modal.shown', function() 
+    {
+        console.log('Modal is shown!');
+    });
+
+    $scope.next = function() 
+    {
+        $ionicSlideBoxDelegate.next();
+    };
+  
+    $scope.previous = function() 
+    {
+        $ionicSlideBoxDelegate.previous();
+    };
+  
+    $scope.goToSlide = function(index) 
+    {
+        $scope.modal.show();
+        $ionicSlideBoxDelegate.slide(index);
+    }
+  
+    $scope.slideChanged = function(index) 
+    {
+        $scope.slideIndex = index;
+    };
+});
  
 
   

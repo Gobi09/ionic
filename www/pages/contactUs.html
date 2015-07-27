@@ -1,35 +1,41 @@
 <ion-view title="Our Awesome Header">
       <ion-content>
-       	<div class="responsive-sm"> 
-	       	<ul class="list">
-	       		<li class="item-input item-stacked-label item-input-inset">
+      	<div class="responsive-sm"> 
+	       	<ul class="padding">
+	       		<li class="item-input item-stacked-label">
 				    <span class="light">Name</span>
+				    <label class="item-input-wrapper">
+				    <input type="text" id="firstName" placeholder="Name"></label>
+				</li>
+				<li class="item-input item-stacked-label">
+					<span class="light">E-Mail</span>
 				    <label class="item-input-wrapper">
 				    <input id="email" type="email" placeholder="Email"></label>
 				</li>
-				<li class="item-input item-stacked-label item-input-inset">
-					<span class="light">E-Mail</span>
-				    <label class="item-input-wrapper">
-				    <input type="text" id="firstName" placeholder="Email"></label>
-				</li>
-				<li class="item-input item-stacked-label item-input-inset">
+				<li class="item-input item-stacked-label">
 					<span class="light">Messages</span>
 				    <label class="item-input-wrapper">
-				    <textarea placeholder="Comments"></textarea></label>
+				    <textarea style="height: 70px;" placeholder="Comments"></textarea></label>
 				</li>
-				<li class="item-input-inset">
-				    <button class="button button-dark button-small item-input-wrapper">Send</button>
+				<li class="item-input item-stacked-label">
+				    <button class="button red-d4  item-input-wrapper buttonMinHeight">Send</button>
 				</li>
 			</ul>
 			<div class="row light">Restaurant Address</div>
 			<div class="row light">
-  				<div class="col col-120"> Selvaraj Chettiar St, <br/>
-	  				Bajanai madam kovil avanue,<br/>
-	  				Reddiyar palayam,<br/>
-	  				Puducherry-605022.<br/>
-	  				Email: gobi@appnlogic.com<br/>
-	  				Phone No:1236548795 </div>
+				<div class="col">
+				Selvaraj Chettiar St, <br/>
+				Bajanai madam kovil avanue,<br/>
+				Reddiyar palayam,<br/>
+				Puducherry-605022.<br/>
+				Email: gobi@appnlogic.com<br/>
+				Phone No:1236548795.
 				</div>
+  			<div class="col" ng-controller="contactUsMap" ng-init="initialize()">
+    			<div id="map" data-tap-disabled="false"></div>
+  			</div>
+  			</div>
+			
 			</div>
 			<div class="row light">&nbsp;</div>
       </ion-content>
